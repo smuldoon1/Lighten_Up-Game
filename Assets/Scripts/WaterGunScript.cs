@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+// This script should be attached to Water-Gun object. Shoots water, checks if the player is allowed to reload (enough ammunition)
+// and is responsible for displaying the ammunition ammount in the ammoText.
 public class WaterGunScript : MonoBehaviour
 {
 	public int waterAmmoClip = 10; // how much water one clip stores
@@ -10,9 +12,9 @@ public class WaterGunScript : MonoBehaviour
 	public float waterAmount = 5.0f; // how much water there is in one 'shot' that can be applied on ONE fired objects
 	public float waterRange = 10.0f; // how far the water can reach 
 
-	public Text ammoText;
-	private bool isAbleToShoot = true;
-	private bool isReloading = false;
+	public Text ammoText; // UI text containing amount of ammunition
+	private bool isAbleToShoot = true; // used in coroutine
+	private bool isReloading = false; // used in reloading function so that the reloading isn't caught in every frame the player pressed reload button
 	private GameObject steamEffect;
 
 	IEnumerator DelayShooting()
