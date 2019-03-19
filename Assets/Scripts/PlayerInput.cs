@@ -21,6 +21,8 @@ public class PlayerInput : MonoBehaviour
     public string bButton = "C1B";
     public string xButton = "C1X";
     public string yButton = "C1Y";
+    public GameObject camera;
+
     // Privates
     private Vector3 startPos;
     private Transform playerTransform;
@@ -41,18 +43,14 @@ public class PlayerInput : MonoBehaviour
             Vector3 direction = Vector3.zero;
             direction.x = Input.GetAxis(moveX);
             direction.z = Input.GetAxis(moveY);
-            playerTransform.position = playerTransform.position + direction * (Time.deltaTime * 100);
+            playerTransform.position = playerTransform.position + (playerTransform.forward * direction.z + playerTransform.right * direction.x) *(Time.deltaTime * 50);
 
         }
         // If the right stick is set to respond
         if (rightStick)
         {
-            // Takes in the input direction
-            Vector3 direction = Vector3.zero;
-            direction.x = Input.GetAxis(horizontal);
-            direction.z = Input.GetAxis(vertical);
-            Vector3 movement = new Vector3(direction.x, 0.0f, direction.z);
-            playerTransform.rotation = Quaternion.LookRotation(movement);
+            playerTransform.Rotate(new Vector3(0, Input.GetAxis(horizontal), 0));
+            camera.transform.Rotate(new Vector3(Input.GetAxis(vertical), 0, 0));
         }
 
         // If a button is pressed
