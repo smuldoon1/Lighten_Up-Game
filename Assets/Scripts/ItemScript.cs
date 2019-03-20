@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+// Should be attached to flamable item. Note that the object must have "Flamable" tag as well. Fires nearby flamable objects,
+// Contains item's health, time to fire, time to extinguish, if was previosuly extinguished, fire spread radius, how much
+// water was already poured over it, instantiates fire particle effect and changes item's colour to black while on fire.
 public class ItemScript : MonoBehaviour
 {
 	public float health = 100.0f; // should be 100
@@ -70,7 +73,7 @@ public class ItemScript : MonoBehaviour
 		this.extinguished = false;
 		this.amountOfWater = 0.0f;
 
-		// replacing the tag so that the candle's function won't find it as flamable object
+		// replacing the tag so that the candle's function won't find it as a flamable object
 		this.transform.gameObject.tag = "Burnt";
 
 		// destroying the fire particle effect

@@ -42,6 +42,11 @@ namespace UnityStandardAssets.Characters.FirstPerson
         private bool m_Jumping;
         private AudioSource m_AudioSource;
 
+        // Taken in inputs set to be player 1 by default
+        public string moveX = "C1moveX";
+        public string moveY = "C1moveY";
+        public string aButton = "C1A";
+
         // Use this for initialization
         private void Start()
         {
@@ -65,7 +70,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
             // the jump state needs to read here to make sure it is not missed
             if (!m_Jump)
             {
-                m_Jump = CrossPlatformInputManager.GetButtonDown("Jump");
+                m_Jump = Input.GetButtonDown(aButton);
             }
 
             if (!m_PreviouslyGrounded && m_CharacterController.isGrounded)
@@ -204,8 +209,8 @@ namespace UnityStandardAssets.Characters.FirstPerson
         private void GetInput(out float speed)
         {
             // Read input
-            float horizontal = CrossPlatformInputManager.GetAxis("Horizontal");
-            float vertical = CrossPlatformInputManager.GetAxis("Vertical");
+            float horizontal = Input.GetAxis(moveX);
+            float vertical = Input.GetAxis(moveY);
 
             bool waswalking = m_IsWalking;
 

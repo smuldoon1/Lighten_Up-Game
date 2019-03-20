@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-// Script should be attached to the candle
+// Script should be attached to the candle. It allows the player to fire up objects.
 public class FireObjectScript : MonoBehaviour
 {
 	public GameObject[] flamableObjects; // array of all the objects that candle can burn

@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+// This script should be attached to Water-Bomb object and it's prefab. Explodes on collision, and puts water on nearby flamable items.
+// The amount of water is dependent on the distance. Responsible for displaying the number of bombs left in the ammoText.
 public class WaterBombScript : MonoBehaviour
 {
 	public float waterAmount = 5.0f; // how much water there is in one 'shot' that can be applied on fired objects

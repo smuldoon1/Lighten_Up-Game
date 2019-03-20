@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+// This script should be attached to human character. It allows the player to choose weapons, use them, reload (Water-Gun)
+// and to refill them. 
 public class ExtinguishObject : MonoBehaviour
 {
 	int currentWeapon = 0; // 0 = no weapon, 1 = "Water-Gun", 2 = "Water-Bomb", 3 = "Water-Mug"
@@ -12,11 +14,11 @@ public class ExtinguishObject : MonoBehaviour
 	float distanceToWater = Mathf.Infinity; // distance to water supply
 	float distanceToFire = Mathf.Infinity; // distance to flamable object's point he is raycasting
 	public Image extinguishBar; // fire bar displaying how much is left to fire up the object
-	public Image humanCrosshair;
-	public float throwForce = 30.0f;
+	public Image humanCrosshair; // human crosshair
+	public float throwForce = 30.0f; // amount of force that player throws the Water-Bomb
 	public bool raycastedFire = false; // needed to use this to make the extinguish bar properly work
 	public Text humanUI; // UI text
-	public Text ammoText;
+	public Text ammoText; // UT ammunition text
 
 	private float amountFilled = 0.0f; // amount of bar to be filled (how much the human extinguished the object already)
 	private Vector3 currentHumanPos;
